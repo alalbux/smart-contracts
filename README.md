@@ -1,5 +1,8 @@
 # Smart contracts
 
+This project is a simple Next.js web application that connects to the Ethereum blockchain using the ethers.js library to display the balance of a connected wallet. Users can connect their wallets using the ethers library and view their account balances in ETH. This application can be used as a starting point for building more complex Ethereum-powered applications on the web.
+
+
 ## Technologies Used
 - Next.js
 - Ethers.js
