@@ -7,11 +7,23 @@ export default function Home() {
 
   async function handleClick() {
     const contractAddress = `${process.env.CONTRACT_ADDRESS}`;
-    const contractABI = `${process.env.ABI}`
-
-    const contract = new ethers.Contract(contractAddress, contractABI, provider);
-    const result = await contract.balanceOf(wallet.address);
-    setBalance(result.toString());
+    const contractABI = `${process.env.ABI}`;
+    let contract;
+    
+    try {
+      contract = new ethers.Contract(contractAddress, contractABI, provider);
+    } catch (error) {
+      console.error("Error creating contract:", error);
+    }
+    
+    if (contract) {
+      try {
+        const result = await contract.balanceOf(wallet.address);
+        setBalance(result.toString());
+      } catch (error) {
+        console.error("Error getting balance:", error);
+      }
+    }
   }
 
   return (
